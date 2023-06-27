@@ -1,0 +1,18 @@
+<p-card class="p-mb-4 article">
+  <div class="p-grid p-nogutter">
+    <div class="p-col-12">
+      <img [src]="article.urlToImage" alt="Card Image" class="article-image" />
+    </div>
+    <div class="p-col-12">
+      <h3>{{article.title}}</h3>
+      <p>{{article.source.name}}</p>
+      <p>by {{article.author}}</p>
+      <p>{{article.publishedAt | date:'short'}}</p>
+      <p>{{article.description}}</p>
+      <p-footer>
+        <button pButton type="button" label="Read More" (click)="navigateToArticle(article.url)"
+          class="p-button-rounded p-button-outlined"></button>
+      </p-footer>
+    </div>
+  </div>
+</p-card>

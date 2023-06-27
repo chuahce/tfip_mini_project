@@ -1,0 +1,29 @@
+<div class="p-grid card">
+  <div class="p-col-12 p-md-4">
+    <img class="card-img" [src]="movie.Poster" alt="Movie Poster">
+  </div>
+  <div class="p-col-12 p-md-8 card-content">
+    <h2 class="card-title">{{ movie.Title }}</h2>
+    <!-- <p class="card-meta">{{ movie.Year }} | {{ movie.Runtime }} | {{ movie.Genre }}</p> -->
+    <p class="card-meta">{{ movie.Year }} | {{ transformRuntime(movie.Runtime) }} | {{ movie.Genre }}</p>
+    <p class="card-plot">{{ movie.Plot }}</p>
+    <p class="card-actors">{{ movie.Actors }}</p>
+    <p class="card-director"><fa-icon [icon]="faClapperboard"></fa-icon>&nbsp;{{ movie.Director }}</p>
+    <div class="card-scores">
+      <div class="score" *ngIf="getRating('Internet Movie Database')">
+        <img class="score-logo" src="../../../../assets/images/imdb-logo.png" alt="IMDb">
+        <span class="score-value">{{ getRating('Internet Movie Database')?.Value }}</span>
+      </div>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="score" *ngIf="getRating('Rotten Tomatoes')">
+        <img class="score-logo" src="../../../../assets/images/rotten-tomatoes-logo.png" alt="Rotten Tomatoes">
+        <span class="score-value">{{ getRating('Rotten Tomatoes')?.Value }}</span>
+      </div>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="score" *ngIf="getRating('Metacritic')">
+        <img class="score-logo" src="../../../../assets/images/metacritic-logo.png" alt="Metacritic">
+        <span class="score-value">{{ getRating('Metacritic')?.Value }}</span>
+      </div>
+    </div>
+  </div>
+</div>

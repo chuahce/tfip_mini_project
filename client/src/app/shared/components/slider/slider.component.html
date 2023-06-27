@@ -1,0 +1,43 @@
+<div class="slider">
+  <div class="slider-controls">
+    <p-button class="p-button-rounded p-button-text p-button-plain p-mr-2" icon="pi pi-chevron-left"
+      (click)="prevSlide()">
+    </p-button>
+    <p-button class="p-button-rounded p-button-text p-button-plain p-ml-2" icon="pi pi-chevron-right"
+      (click)="nextSlide()">
+    </p-button>
+  </div>
+
+  <div class="slider-indicators">
+    <span *ngFor="let item of items; let i = index" (click)="goToSlide(i)">
+      <img [src]="imagesSizes.small + item.backdrop_path" [class.active]="i === currentSlideIndex" alt="thumbnail" />
+    </span>
+  </div>
+
+  <div class="slider">
+    <ng-container *ngFor="let item of items; let i = index">
+      <div class="slide" *ngIf="i == currentSlideIndex">
+        <div class="slide-bg">
+          <img class="slide-bg-image" [src]="imagesSizes.large + item.backdrop_path" [alt]="item.original_title" />
+        </div>
+        <div class="slide-pane">
+          <h2 class="name mt-0">{{ item.original_title }}</h2>
+          <div class="meta mb-3">
+            <div class="info">
+              <span class="rating">
+                <fa-icon [icon]="faStar" style="color: #ffff00"></fa-icon>
+                <span class="rating-value">{{ item.vote_average }}</span>
+                <span>/10</span>
+              </span>
+              <span>{{ item.vote_count }}</span>
+              <span>{{ item.release_date | date: 'yyyy' }}</span>
+            </div>
+          </div>
+
+          <div class="desc mt-6">
+            {{ item.overview }}
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>

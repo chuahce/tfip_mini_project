@@ -1,0 +1,130 @@
+@import '../../../../styles/_colors.css';
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 35rem;
+  position: relative;
+  z-index: 1;
+}
+
+.slider .slide {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  height: 35rem;
+}
+
+.slider .slide-bg {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.slider .slide-bg:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  content: '';
+  background-image: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 11%, rgba(255, 255, 255, 0) 100%);
+}
+
+.slider .slide-bg-image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.slider .slide-pane {
+  position: absolute;
+  width: 45%;
+  top: 5rem;
+  left: 5rem;
+}
+
+.slider .slide-pane .name {
+  font-size: 2.8rem;
+}
+
+.slider .slide-pane .meta {
+  font-size: 1.4rem;
+  color: var(--lightGray);
+}
+
+.slider .slide-pane .meta .info {
+  display: flex;
+}
+
+.slider .slide-pane .meta .info>span:not(:last-child):after {
+  content: '|';
+  margin-right: 9px;
+  margin-left: 9px;
+}
+
+.slider .slide-pane .meta .info .rating {
+  display: flex;
+  align-items: center;
+}
+
+::ng-deep .slider .slide-pane .meta .info .rating fa-icon.faStar {
+  color: #ffff00;
+}
+
+.slider .slide-pane .meta .info .rating-value {
+  color: var(--white);
+}
+
+.slider .slide-pane .desc {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.slider-controls {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.slider-controls p-button {
+  pointer-events: all;
+}
+
+.slider-indicators {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+}
+
+.slider-indicators span {
+  padding: 0 0.5rem;
+}
+
+.slider-indicators img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 5px;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.slider-indicators img.active {
+  opacity: 1;
+}
+
+:host {
+  position: relative;
+}

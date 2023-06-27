@@ -1,0 +1,65 @@
+.card {
+  display: flex;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.card-img {
+  width: 200px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.card-content {
+  flex-grow: 1;
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-meta {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.card-plot,
+.card-actors {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.card-director {
+  font-size: 16px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.card-scores {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.card .card-content .card-scores .score {
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+}
+
+.score-logo {
+  width: 90px;
+  height: 90px;
+  margin-right: 5px;
+}
+
+.score-value {
+  font-size: 80px;
+  font-weight: bold;
+}

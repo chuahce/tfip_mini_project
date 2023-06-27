@@ -1,0 +1,56 @@
+@import '../../../../styles/_colors.css';
+
+.item {
+  position: relative;
+  display: block;
+  min-height: 425px;
+  border-radius: 5px;
+  background-color: var(--bgColorLight);
+  border: 1px solid var(--lightGray);
+}
+
+.item-image img {
+  width: 100%;
+  border-radius: 5px;
+  height: 375px;
+  object-fit: cover;
+}
+
+.item-rating {
+  position: absolute;
+  display: flex;
+  font-size: 14px;
+  align-items: center;
+  top: 10px;
+  left: 10px;
+  background-color: var(--bgColorLight);
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.item-rating .app-icon {
+  margin-right: 5px;
+  color: #d4af37;
+}
+
+.item-title {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  margin: 0.5rem;
+  height: 30px;
+}
+
+/* .fa-stack-1x {
+  color: #ffffff;
+  font-size: 15px;
+  margin-top: -423px;
+  margin-left: 281px;
+} */
+
+/* .fa-stack-2x {
+  color: #9DADE6;
+  font-size: 28px;
+  margin-top: -427px;
+  margin-left: 277px;
+} */

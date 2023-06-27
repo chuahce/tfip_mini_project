@@ -1,0 +1,20 @@
+<ng-container *ngIf="itemData">
+  <!-- <span class="fa-stack watchlist-icon-container">
+    <fa-icon [icon]="faBookmark" class="fa-stack-2x"></fa-icon>
+    <fa-icon [icon]="faPlus" class="fa-stack-1x"></fa-icon>
+  </span> -->
+  <a class="item" [routerLink]="'/movie-details/' + itemData.id">
+    <div class="item-rating">
+      <fa-icon [icon]="faStar" style="color: #ffff00"></fa-icon>
+      <span>{{ itemData.vote_average }}</span>/10
+    </div>
+    <div class="item-image">
+      <img [src]="imagesSizes.medium + itemData.poster_path" [alt]="itemData.original_title" />
+    </div>
+    <div class="item-title">{{ itemData.original_title }}</div>
+  </a>
+  <!-- <div class="fa-stack watchlist-icon-container">
+    <fa-icon [icon]="faBookmark" class="fa-stack-2x"></fa-icon>
+    <fa-icon [icon]="faPlus" class="fa-stack-1x"></fa-icon>
+  </div> -->
+</ng-container>
