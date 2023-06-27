@@ -1,0 +1,11 @@
+.search-bar {
+  width: 1900px;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+.pi-search {
+  position: right;
+  margin-top: 3px;
+  margin-right: 10px;
+}

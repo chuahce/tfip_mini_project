@@ -1,0 +1,92 @@
+@import '../../../styles/_colors.css';
+
+:host ::ng-deep .p-tabview-nav {
+  justify-content: center;
+}
+
+:host ::ng-deep .p-tabview-nav li .p-tabview-nav-link {
+  background: var(--bgColor);
+}
+
+:host ::ng-deep .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+  background: var(--bgColor);
+}
+
+.poster {
+  max-width: 100%;
+}
+
+.overview {
+  line-height: 1.5;
+}
+
+.stat {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.stat .label {
+  width: 150px;
+  font-weight: bold;
+}
+
+.stat .value {
+  color: var(--primaryColor);
+}
+
+.actor {
+  padding: 10px;
+}
+
+.actor img {
+  width: 100%;
+}
+
+.actor span {
+  display: block;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.actor-title {
+  padding-left: 1em;
+}
+
+p.overview {
+  margin-bottom: 2em;
+}
+
+.info-item {
+  padding: 5px;
+}
+
+/* .fa-stack-1x {
+  color: #ffffff;
+  font-size: 15px;
+  margin-top: -444px;
+  margin-left: 1px; 
+}
+
+.fa-stack-2x {
+  color: #9DADE6;
+  font-size: 28px;
+  margin-top: -444px;
+  margin-left: 277px; 
+} */
+
+.info-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start
+}
+
+.watchlist-button {
+  color: white;
+  margin-right: 1055px;
+}
+
+.watchlist-button .fas {
+  color: #181818;
+  font-size: 30px;
+  font-weight: bold;
+}

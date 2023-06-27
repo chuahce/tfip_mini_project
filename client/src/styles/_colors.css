@@ -1,0 +1,20 @@
+:root {
+  --bgColor: #141414;
+  --bgColorLight: #181818;
+  --white: #fff;
+  --lightGray: #999;
+  --primaryColor: #9DADE6;
+}
+
+body {
+  background-color: var(--bgColor);
+  color: var(--white);
+}
+
+p {
+  color: var(--lightGray);
+}
+
+a {
+  color: var(--primaryColor);
+}

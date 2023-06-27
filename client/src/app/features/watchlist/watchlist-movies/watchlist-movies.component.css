@@ -1,0 +1,25 @@
+@import '../../../../styles/_colors.css';
+
+.item {
+  position: relative;
+  display: block;
+  min-height: 425px;
+  border-radius: 5px;
+  background-color: var(--bgColorLight);
+  border: 1px solid var(--lightGray);
+}
+
+.item-image img {
+  width: 100%;
+  border-radius: 5px;
+  height: 375px;
+  object-fit: cover;
+}
+
+.item-title {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  margin: 0.5rem;
+  height: 30px;
+}

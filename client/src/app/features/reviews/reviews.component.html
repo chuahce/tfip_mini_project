@@ -1,0 +1,38 @@
+<div class="mb-3">
+  <p-button styleClass="p-button-primary" (click)="addReviewOnClick()">
+    <strong><span class="pi pi-plus-circle pr-2"></span> Add Review</strong>
+  </p-button>
+
+  <div class="card flex justify-content-center">
+    <p-sidebar [(visible)]="addReviewFormVisible" styleClass="w-30rem" class="p-sidebar-lg" position="right">
+      <ng-template pTemplate="header">
+        <h3 class="m-0 ml-3">Add Review for <strong> {{movieTitle}}</strong></h3>
+      </ng-template>
+      <app-add-review [movieId]="movieId"></app-add-review>
+    </p-sidebar>
+  </div>
+</div>
+
+<div class="card" *ngFor="let review of reviews" class="mb-3">
+  <p-panel>
+    <ng-template pTemplate="header" class="p-panel-header">
+      <span class="rating">
+        <span class="app-icon">star</span>
+        <span class="rating-value">{{ review.rating }}</span>
+        <span>/10</span>
+      </span>
+      <p-divider layout="vertical" class="h-3"></p-divider>
+      <div class="text-primary font-semibold text-xl">{{review.title}}</div>
+    </ng-template>
+
+    <ng-template pTemplate="content">
+      <div class="user-date">
+        <strong class="mr-3">{{ review.username }}</strong>
+        <span>{{ review.createdAt | date: 'dd.MM.yyyy hh:mm' }}</span>
+      </div>
+      <div class="comment">
+        {{ review.message }}
+      </div>
+    </ng-template>
+  </p-panel>
+</div>

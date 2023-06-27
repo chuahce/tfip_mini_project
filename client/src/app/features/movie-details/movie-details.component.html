@@ -1,0 +1,113 @@
+<ng-container *ngIf="movie">
+  <app-slider [items]="[movie]" [isBanner]="true"></app-slider>
+  <p-tabView>
+    <p-tabPanel header="Movie Info">
+      <div class="grid">
+        <div class="col-12 md:col-3 lg:col-3">
+          <img class="poster" [src]="imagesSizes.medium + movie.poster_path" [alt]="movie.title" />
+        </div>
+        <div class="col-12 md:col-9 lg:col-9">
+          <!-- <h2>Movie Info</h2>
+                    <p-button label="Add to Watchlist" class="watchlist-button">
+                      <i class="fas fa-plus"></i>
+                    </p-button> -->
+          <div class="info-header">
+            <span class="mr-5">
+              <h2>Movie Info</h2>
+            </span>
+            <span>
+              <app-watchlist [item]="movie" [isLoggedIn]="isLoggedIn"></app-watchlist>
+            </span>
+          </div>
+          <p class="overview">{{ movie.overview }}</p>
+          <div class="stat">
+            <div class="label">Release Date:</div>
+            <div class="value">
+              {{ movie.release_date | date: 'MMM dd, yyyy' }}
+            </div>
+          </div>
+          <div class="info-item"></div>
+          <div class="stat">
+            <div class="label">Language:</div>
+            <div class="value">
+              {{ getLanguageName(movie.original_language) }}
+            </div>
+          </div>
+          <div class="info-item"></div>
+          <div class="stat">
+            <div class="label">Director:</div>
+            <div class="value">
+              <span *ngFor="let director of directors; let isLast=last">
+                {{ director }}<ng-container *ngIf="!isLast">, </ng-container>
+              </span>
+            </div>
+          </div>
+          <div class="info-item"></div>
+          <div class="stat">
+            <div class="label">Revenue:</div>
+            <div class="value">
+              {{ movie.revenue | currency }}
+            </div>
+          </div>
+          <div class="info-item"></div>
+          <div class="stat">
+            <div class="label">Duration:</div>
+            <div class="value">{{ convertRuntime(movie.runtime) }}</div>
+          </div>
+          <div class="info-item"></div>
+          <div class="stat">
+            <div class="label">Status:</div>
+            <div class="value">
+              {{ movie.status }}
+            </div>
+          </div>
+          <div class="info-item"></div>
+          <div class="stat">
+            <div class="label">Genres:</div>
+            <div class="value">
+              <span *ngFor="let genre of movie.genres; let isLast=last">
+                {{ genre.name }}<ng-container *ngIf="!isLast">, </ng-container>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </p-tabPanel>
+
+    <p-tabPanel header="Videos">
+      <div class="grid">
+        <ng-container *ngFor="let movieTrailer of movieTrailers">
+          <div class="col-12 md:col-4 lg:col-4">
+            <app-trailer-player [key]="movieTrailer.key" [site]="movieTrailer.site"></app-trailer-player>
+          </div>
+        </ng-container>
+      </div>
+    </p-tabPanel>
+    <p-tabPanel header="Photos">
+      <div class="grid">
+        <ng-container *ngFor="let movieImage of movieImages?.backdrops">
+          <div class="col-12 md:col-4 lg:col-4">
+            <p-image [src]="imagesSizes.large + movieImage.file_path" alt="Image" width="100%"
+              [preview]="true"></p-image>
+          </div>
+        </ng-container>
+      </div>
+
+    </p-tabPanel>
+    <p-tabPanel header="Reviews">
+      <app-reviews [movieTitle]="movie.title" [isLoggedIn]="isLoggedIn"></app-reviews>
+    </p-tabPanel>
+  </p-tabView>
+  <h2 class="actor-title">Top Cast</h2>
+  <p-carousel [numVisible]="5" *ngIf="movieCredits" [value]="movieCredits.cast">
+    <ng-template let-actor pTemplate="item">
+      <ng-container *ngIf="actor.profile_path"></ng-container>
+      <div class="actor">
+        <img [src]="imagesSizes.medium + actor.profile_path" alt="" />
+        <span>{{ actor.name }}</span>
+      </div>
+    </ng-template>
+  </p-carousel>
+  <app-items-banner [items]="recommendations" title="Recommendations"></app-items-banner>
+  <app-items-banner [items]="similarMovies" title="Similar Movies"></app-items-banner>
+</ng-container>

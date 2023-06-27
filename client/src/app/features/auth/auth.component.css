@@ -1,0 +1,14 @@
+@import '../../../styles/_colors.css';
+
+#root {
+  padding: 30px;
+}
+
+.surface-card {
+  width: 300px !important;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bgColorLight);
+  margin: 0;
+  margin: auto;
+}

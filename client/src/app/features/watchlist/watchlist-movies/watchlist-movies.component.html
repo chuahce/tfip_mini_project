@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="grid">
+    <!-- <div class="col-6 md:col-3 lg:col-3" *ngFor="let movie of movies"> -->
+    <div class="col-6 md:col-3 lg:col-3" *ngFor="let itemData of watchlist; ; let i = index">
+      <ng-container *ngIf="itemData">
+        <div class="item">
+          <a [routerLink]="'/movie-details/' + itemData.movieId">
+            <div class="item-image">
+              <img [src]="imagesSizes.medium + itemData.posterPath" [alt]="itemData.title" />
+            </div>
+          </a>
+          <div class="item-title flex justify-content-between flex-wrap">
+            <a [routerLink]="'/movie-details/' + itemData.movieId">
+              <span>{{ itemData.title }}</span>
+            </a>
+            <p-button icon="pi pi-times" label="Remove" styleClass="p-button-sm p-button-outlined px-1 py-1"
+              (click)="removeFromWatchlist(itemData, i)"></p-button>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

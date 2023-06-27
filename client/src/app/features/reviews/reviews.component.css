@@ -1,0 +1,27 @@
+.app-icon {
+  margin-right: 5px;
+  color: #d4af37;
+}
+
+.rating-value {
+  color: var(--white);
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+:host ::ng-deep .p-divider.p-divider-vertical {
+  padding: 0.1rem 0;
+}
+
+.user-date {
+  font-size: 14px;
+  color: #888;
+}
+
+.comment {
+  margin-top: 10px;
+  font-size: 16px;
+}

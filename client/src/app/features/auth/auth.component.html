@@ -1,0 +1,38 @@
+<div class="surface-card p-4 shadow-2 border-round mt-5 mb-5">
+  <div class="text-center mb-5">
+    <div class="text-900 text-3xl font-medium mb-3">{{ isLoginPage? 'Sign In' : 'Sign Up'}}</div>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label for="email" class="block text-900 font-medium mb-2">Email</label>
+    <input id="email" type="text" placeholder="Email" pInputText formControlName="username" required
+      class="w-full mb-3">
+    <div *ngIf="form.get('username')!.invalid && form.get('username')!.touched" class="mb-3">
+      Valid Email is required.
+    </div>
+
+    <label for="password1" class="block text-900 font-medium mb-2">Password</label>
+    <input id="password1" type="password" placeholder="Password" pInputText formControlName="password" required
+      class="w-full mb-3">
+    <div *ngIf="form.get('password')!.invalid && form.get('password')!.touched" class="mb-3">
+      Password is required.
+    </div>
+
+    <button type="submit" [label]="isLoginPage? 'Sign In' : 'Sign Up'" [disabled]="form.invalid" pButton pRipple
+      icon="pi pi-user" class="w-full"></button>
+
+    <div *ngIf="isLoginFailed" class="mt-2 text-red-500">
+      Wrong Username or Password!
+    </div>
+
+    <div class="text-center mt-3" *ngIf="isLoginPage">
+      <span class="text-600 font-medium line-height-3">Don't have an account?</span>
+      <a class="font-medium no-underline ml-2 text-blue-500 cursor-pointer" routerLink="/auth/signup">SIGN UP</a>
+    </div>
+
+    <div class="text-center mt-3" *ngIf="!isLoginPage">
+      <span class="text-600 font-medium line-height-3">Already have an account?</span>
+      <a class="font-medium no-underline ml-2 text-blue-500 cursor-pointer" routerLink="/auth/sigin">SIGN IN</a>
+    </div>
+  </form>
+</div>

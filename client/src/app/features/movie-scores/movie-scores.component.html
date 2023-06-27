@@ -1,0 +1,12 @@
+<div class="p-field">
+  <div class="p-fluid">
+    <span class="p-input-icon-right">
+      <i class="pi pi-search" (click)="searchMovies()"></i>
+      <input pInputText type="text" [(ngModel)]="search" (keyup.enter)="searchMovies()"
+        placeholder="Search movies scores or ratings (IMDb, Rotten Tomatoes and Metacritic)" class="search-bar">
+    </span>
+  </div>
+</div>
+
+<app-movie-scores-card *ngFor="let movie of movieResults" [movie]="movie"
+  (click)="goToDetails(movie)"></app-movie-scores-card>
