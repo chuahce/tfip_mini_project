@@ -25,7 +25,7 @@ public class MovieNewsService {
     
     private Map<String, String> categories = new HashMap<>();
 
-    public MovieNewsService(@Value("${tmdb.newsapi.baseurl}") String baseUrl, @Value("${tmdb.newsapi.key}") String apiKey) {
+    public MovieNewsService(@Value("${open.newsapi.baseurl}") String baseUrl, @Value("${open.newsapi.key}") String apiKey) {
         this.baseUrl = baseUrl;
         this.apiKey = apiKey;
         setupCategories();
