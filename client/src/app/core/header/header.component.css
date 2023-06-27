@@ -1,0 +1,76 @@
+@import '../../../styles/_colors.css';
+
+header .navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  height: 65px;
+  background-color: var(--bgColorLight);
+  margin: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+header .navbar-logo {
+  font-family: 'Roboto';
+  font-size: 1.8em;
+  font-weight: bold;
+  color: var(--primaryColor);
+  text-decoration: none;
+  letter-spacing: 2px;
+  margin-left: 20px;
+}
+
+.search-bar {
+  width: 800px;
+  margin-left: -5px;
+}
+
+header .navbar-links {
+  display: block;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+header .navbar-links li {
+  display: inline;
+  margin-right: 15px;
+}
+
+header .navbar-links li a {
+  font-weight: bold;
+}
+
+
+.watchlist-icon {
+  margin-bottom: 10px;
+}
+
+.fa-stack-1x {
+  color: #181818;
+  font-size: 15px;
+  margin-left: 3.5px;
+  margin-top: 5px;
+}
+
+.fa-stack-2x {
+  font-size: 28px;
+}
+
+.watchlist-text {
+  vertical-align: middle;
+  margin-right: 20px;
+  margin-left: -8px;
+}
+
+.github-icon {
+  font-size: 2em;
+  align-self: flex-start;
+  margin-right: -1px;
+}
+
+.p-button-raised {
+  margin-top: 2px;
+  margin-right: 5px;
+}

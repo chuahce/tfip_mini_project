@@ -1,0 +1,37 @@
+<header>
+  <nav class="navbar">
+    <a href="" class="navbar-logo">Yet Another Movie App</a>
+    <span class="p-input-icon-right">
+      <i class="pi pi-search"></i>
+      <input type="text" pInputText placeholder="Search movies by title" [(ngModel)]="searchValue"
+        (keyup.enter)="searchChanged()" class="search-bar" />
+    </span>
+    <ul class="navbar-links">
+      <li><a routerLink="/">Home</a></li>
+      <li><a routerLink="/movies">Movies</a></li>
+      <li><a routerLink="/movie-news">Movie News</a></li>
+      <li><a routerLink="/movie-scores">Movie Scores</a></li>
+      <li><a routerLink="/genres">Genres</a></li>
+      <li>
+        <a routerLink="/watchlist">
+          <span class="fa-stack">
+            <fa-icon [icon]="faBookmark" class="fa-stack-2x"></fa-icon>
+            <fa-icon [icon]="faPlus" class="fa-stack-1x"></fa-icon>
+          </span>
+          <span class="watchlist-text">Watchlist</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/chuahce/tfip_mini_project" target="_blank">
+          <fa-icon [icon]="faGithub" class="github-icon fa-2x"></fa-icon>
+        </a>
+      </li>
+      <li *ngIf="(isLoggedIn | async)">
+        <button pButton type="button" label="Sign Out" class="p-button-raised" routerLink="/auth/signout"></button>
+      </li>
+      <li *ngIf="!(isLoggedIn | async)">
+        <button pButton type="button" label="Sign In" class="p-button-raised" routerLink="/auth/signin"></button>
+      </li>
+    </ul>
+  </nav>
+</header>
