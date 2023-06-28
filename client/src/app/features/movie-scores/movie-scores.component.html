@@ -8,5 +8,5 @@
   </div>
 </div>
 
-<app-movie-scores-card *ngFor="let movie of movieResults" [movie]="movie"
+<app-movie-scores-card style="cursor: pointer" *ngFor="let movie of movieResults" [movie]="movie"
   (click)="goToDetails(movie)"></app-movie-scores-card>

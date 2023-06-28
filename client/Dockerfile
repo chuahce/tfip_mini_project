@@ -1,5 +1,5 @@
 # Set the base image
-FROM node:14.20 as build
+FROM node:16.14-alpine as build
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -8,13 +8,13 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install the dependencies
-RUN npm install
+RUN npm install --production
 
 # Copy the entire application code into the container
 COPY . .
 
-# Build the Angular application
-RUN npm run build
+# Build the Angular application for production
+RUN npm run build -- --configuration=production
 
 # Use a lightweight web server to serve the Angular application
 FROM nginx:1.21.0-alpine

@@ -2,16 +2,14 @@ import { Injectable } from '@angular/core';
 import { MovieScores, MovieSearchResponse } from '../models/movie-scores';
 import { Observable, catchError, forkJoin, map, of, switchMap, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment'
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieScoresService {
   // private baseurl = 'http://www.omdbapi.com/';
-  private baseurl = 'http://localhost:8080/api/movie-scores';
-  private apikey = '89d3ad2d';
-  private tmdbBaseurl = 'https://api.themoviedb.org/3';
-  private tmdbApiKey = 'ea09862a785b72ce2751bff4bd8f27cb';
+  private baseurl = `${environment.apiUrl}/movie-scores`;
 
   constructor(private http: HttpClient) { }
 
@@ -50,14 +48,6 @@ export class MovieScoresService {
 
   getMovieScores(imdbID: string): Observable<MovieScores> {
     return this.http.get<MovieScores>(`${this.baseurl}/${imdbID}`);
-  }
-
-  searchMovieOnTMDb(title: string): Observable<any> {
-    const url = `${this.tmdbBaseurl}/search/movie?api_key=${this.tmdbApiKey}&query=${encodeURIComponent(title)}`;
-    return this.http.get<any>(url).pipe(
-      map(response => response.results),
-      catchError(this.handleError)
-    );
   }
 
   handleError(error: any) {

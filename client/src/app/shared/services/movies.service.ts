@@ -4,19 +4,18 @@ import { Movie, MovieCredits, MovieResponse, MovieImages, MovieVideoResponse } f
 import { map, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { GenresResponse } from '../models/genre';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MoviesService {
-  baseUrl: string = 'http://localhost:8080/api/movies';
-  // baseUrl: string = 'https://api.themoviedb.org/3';
-  apiKey: string = 'ea09862a785b72ce2751bff4bd8f27cb';
+  baseUrl: string = `${environment.apiUrl}/movies`;
 
   constructor(private http: HttpClient) { }
 
   getMovies(type: string = 'upcoming', count: number = 20) {
-    return this.http.get<MovieResponse>(`${this.baseUrl}/movie/${type}?api_key=${this.apiKey}`).pipe(
+    return this.http.get<MovieResponse>(`${this.baseUrl}/movie/${type}`).pipe(
       map((res) => {
         const filteredMovies = res.results.filter(movie => movie.backdrop_path && movie.poster_path);
         return filteredMovies.slice(0, count);
@@ -25,12 +24,12 @@ export class MoviesService {
   }
 
   getMovieDetails(id: string) {
-    return this.http.get<Movie>(`${this.baseUrl}/${id}?api_key=${this.apiKey}`);
+    return this.http.get<Movie>(`${this.baseUrl}/${id}`);
   }
 
   getMovieTrailers(id: string) {
     return this.http
-      .get<MovieVideoResponse>(`${this.baseUrl}/${id}/videos?api_key=${this.apiKey}`)
+      .get<MovieVideoResponse>(`${this.baseUrl}/${id}/videos`)
       .pipe(
         switchMap((res) => {
           return of(res.results);
@@ -39,7 +38,7 @@ export class MoviesService {
   }
 
   getMoviesGenres() {
-    return this.http.get<GenresResponse>(`${this.baseUrl}/genre/movie/list?api_key=${this.apiKey}`).pipe(
+    return this.http.get<GenresResponse>(`${this.baseUrl}/genre/movie/list`).pipe(
       switchMap((res) => {
         return of(res.genres);
       })
@@ -49,7 +48,7 @@ export class MoviesService {
   getMoviesByGenre(genreId: string, pageNumber: number) {
     return this.http
       .get<MovieResponse>(
-        `${this.baseUrl}/discover/movie?with_genres=${genreId}&page=${pageNumber}&api_key=${this.apiKey}`
+        `${this.baseUrl}/discover/movie?with_genres=${genreId}&page=${pageNumber}`
       )
       .pipe(
         map((res) => {
@@ -59,17 +58,17 @@ export class MoviesService {
   }
 
   getMovieImages(id: string) {
-    return this.http.get<MovieImages>(`${this.baseUrl}/${id}/images?api_key=${this.apiKey}`);
+    return this.http.get<MovieImages>(`${this.baseUrl}/${id}/images`);
   }
 
   getMovieCredits(id: string) {
     return this.http.get<MovieCredits>(
-      `${this.baseUrl}/${id}/credits?api_key=${this.apiKey}`
+      `${this.baseUrl}/${id}/credits`
     );
   }
 
   getMovieRecommendations(movieId: string) {
-    return this.http.get<MovieResponse>(`${this.baseUrl}/${movieId}/recommendations?api_key=${this.apiKey}`).pipe(
+    return this.http.get<MovieResponse>(`${this.baseUrl}/${movieId}/recommendations`).pipe(
       map((res) => {
         return res.results.filter(movie => movie.backdrop_path && movie.poster_path);
       })
@@ -78,7 +77,7 @@ export class MoviesService {
 
   getMovieSimilar(id: string) {
     return this.http
-      .get<MovieResponse>(`${this.baseUrl}/${id}/similar?api_key=${this.apiKey}`)
+      .get<MovieResponse>(`${this.baseUrl}/${id}/similar`)
       .pipe(
         map((res) => {
           const filteredMovies = res.results.filter(movie => movie.backdrop_path && movie.poster_path);
@@ -91,7 +90,7 @@ export class MoviesService {
     const uri = searchValue ? '/search/movie' : '/movie/popular';
     return this.http
       .get<MovieResponse>(
-        `${this.baseUrl}${uri}?page=${page}&query=${searchValue}&api_key=${this.apiKey}`
+        `${this.baseUrl}${uri}?page=${page}&query=${searchValue}`
       )
       .pipe(
         map((res) => {

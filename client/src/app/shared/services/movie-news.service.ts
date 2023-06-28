@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieNewsService {
-  private baseUrl = 'http://localhost:8080/api/news';
-  // private baseUrl = 'https://newsapi.org/v2/everything';
-  private apiKey = 'd600519c4a374d9f88f9010c42ba1e66';
+  private baseUrl = `${environment.apiUrl}/news`;
 
   private categories: { [key: string]: string } = {
     boxOffice: "movies AND (worldwide box office OR Hollywood box office OR blockbuster)",
@@ -41,7 +40,7 @@ export class MovieNewsService {
     date.setDate(date.getDate() - 7);
     const fromDate = date.toISOString().split('T')[0];
 
-    const url = `${this.baseUrl}?q=${encodeURIComponent(q)}&from=${fromDate}&language=en&sortBy=relevancy&pageSize=${pageSize}&page=${page}&apiKey=${this.apiKey}`;
+    const url = `${this.baseUrl}?q=${encodeURIComponent(q)}&from=${fromDate}&language=en&sortBy=relevancy&pageSize=${pageSize}&page=${page}`;
     return this.http.get(url).pipe(
       map((response: any) => {
         // Filter out articles without an image URL

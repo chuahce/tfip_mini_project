@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieScores, MovieSearchResponse, MovieSearchResult } from 'src/app/shared/models/movie-scores';
+import { MovieScores } from 'src/app/shared/models/movie-scores';
 import { MovieScoresService } from '../../shared/services/movie-scores.service'
-import { Subscription } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie-scores',
@@ -50,17 +48,7 @@ export class MovieScoresComponent implements OnInit {
   }
 
   goToDetails(movie: MovieScores): void {
-    this.movieScoresService.searchMovieOnTMDb(movie.Title).subscribe({
-      next: tmdbSearchResults => {
-        if (tmdbSearchResults && tmdbSearchResults.length > 0) {
-          const correspondingTmdbMovie = tmdbSearchResults[0];
-          this.router.navigate(['movie-details', correspondingTmdbMovie.id]);
-        } else {
-          console.log(`No matching movie found on TMDb for title: ${movie.Title}`);
-        }
-      },
-      error: error => console.error(error)
-    });
+    this.router.navigate(['movie-details', movie.imdbID]);
   }
 }
 
